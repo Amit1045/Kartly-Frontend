@@ -1,7 +1,9 @@
 import { create } from "zustand";
 const API_URL = import.meta.env.VITE_API_URL;
+
 export const useProduct = create((set) => ({
   products: [],
+  loading: false,
   setProducts: (products) => set({ products }),
   createProduct: async (newProduct) => {
     if (!newProduct.name || !newProduct.image || !newProduct.price) {
@@ -27,12 +29,15 @@ export const useProduct = create((set) => ({
   }
   ,
   fetchProducts: async () => {
+    set({ loading: true });
     const res = await fetch(`${API_URL}/api/products`);
     try {
       const data = await res.json();
-      set({ products: data.data })
+      set({ products: data.data, loading: false })
+     
     } catch (error) {
       console.log("Error : ", error);
+      set({loading:false})
     }
   },
   DeleteProducts: async (pid) => {

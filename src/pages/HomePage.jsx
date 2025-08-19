@@ -4,14 +4,28 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { useProduct } from '../ProductData/useProduct';
 import { Link } from 'react-router-dom';
+// import CloudSyncIcon from '@mui/icons-material/CloudSync';
+// import * as React from 'react';
+// import CircularProgress from '@mui/material/CircularProgress';
+// import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
+
+
 
 function HomePage({ isLight }) {
   const { fetchProducts, products, DeleteProducts } = useProduct()
+  const [loading, setLoading] = useState(true);
 
+useEffect(() => {
+  const loadProducts = async () => {
+    await fetchProducts(); // This updates Zustand state
+    setLoading(false);
+  };
+  loadProducts();
+}, [fetchProducts]);
 
-  useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
+  if (loading) return <p className={isLight?"text-center text-grey-500 text-5xl mt-[100px]":"text-center text-white text-5xl mt-[100px]"}>Loading...<CircularProgress /></p>;
+
 
   const handleDelete = async (pid) => {
     try {
