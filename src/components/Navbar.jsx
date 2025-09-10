@@ -7,7 +7,7 @@ function Navbar({ isLight, setIsLight }) {
   return (
     <div
       className={`max-w-6xl mx-auto px-4 flex justify-between items-center h-16 shadow-md`}>
-      <Link to="/">
+      <Link to="/home">
         <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Kartly 🛒</h1>
       </Link>
       <div className="flex gap-2">

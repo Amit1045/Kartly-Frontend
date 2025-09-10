@@ -16,7 +16,7 @@ function CreatePage({isLight}) {
       const result = await createProduct(newProduct);
       if (result.success) {
         // alert("Product created Successful !!")
-        navigate('/')
+        navigate('/home')
         
       }
     }

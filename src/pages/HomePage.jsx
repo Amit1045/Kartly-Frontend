@@ -68,7 +68,7 @@ function HomePage({ isLight }) {
                   <EditNoteIcon className='text-zinc-600' />
                 </button>
               </Link>
-              <Link to={`buy/${Product._id}`}>
+              <Link to={`/buy/${Product._id}`}>
                 <button className='bg-amber-200 rounded text-zinc-600 px-2 py-1 hover:bg-red-400 hover:text-white' >
                   <LocalMallIcon className='text-red-600' /></button>
               </Link>

@@ -11,10 +11,10 @@ import {
   Alert,
 } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-import { useProduct } from "../../ProductData/useProduct";
+import { useProduct } from "../ProductData/useProduct";
 import { useParams } from "react-router-dom";
 
-export default function BuyProduct() {
+export default function BuyProduct({isLight}) {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
   const { products } = useProduct();
@@ -38,21 +38,19 @@ export default function BuyProduct() {
 
   const handleBuy = () => {
     setSuccess(true);
-    // Later connect API call here
   };
 
   return (
     <Card
       sx={{
         width: "100%",
-        height: { xs: "auto", md: "91vh" }, // auto height on phones
+        height: { xs: "auto", md: "91vh" },
         borderRadius: 0,
         boxShadow: 4,
         display: "flex",
-        flexDirection: { xs: "column", md: "row" }, // column on small, row on bigger
+        flexDirection: { xs: "column", md: "row" }, 
       }}
     >
-      {/* Left Side (Image) */}
       <CardMedia
         component="img"
         image={product.image}
@@ -64,7 +62,6 @@ export default function BuyProduct() {
         }}
       />
 
-      {/* Right Side (Content) */}
       <CardContent
         sx={{
           width: { xs: "100%", md: "50%" },
@@ -72,23 +69,24 @@ export default function BuyProduct() {
           flexDirection: "column",
           justifyContent: "center",
           p: { xs: 3, md: 6 },
-          bgcolor: "#fff",
+          bgcolor: isLight? "#fff":"#1e2939",
+          color:isLight?"black":"white"
         }}
       >
-        <Typography variant="h5" md={{ variant: "h4" }} fontWeight="bold" gutterBottom>
+        <Typography variant="h5" md={{ variant: "h4" }} fontWeight="bold" gutterBottom fontFamily={"cursive"} fontSize={"50px"}>
           {product.name}
         </Typography>
 
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography variant="body2"  sx={{ mb: 3 }}>
           Premium quality product with exclusive design.
         </Typography>
 
-        {/* Base Price */}
+       
         <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
           Base Price: ${product.price}
         </Typography>
 
-        {/* Total Price */}
+      
         <Typography
           variant="h5"
           sx={{ color: "primary.main", fontWeight: "bold", mb: 2 }}
@@ -98,8 +96,7 @@ export default function BuyProduct() {
 
         <Box sx={{ borderBottom: "1px solid #ddd", mb: 3 }} />
 
-        {/* Quantity */}
-        <Box sx={{ display: "flex", gap: 2, alignItems: "center", mb: 3 }}>
+        <Box sx={{ display: "flex", gap: 2, alignItems: "center", mb: 3}}>
           <Typography fontWeight="500">Quantity:</Typography>
           <TextField
             type="number"
@@ -107,11 +104,10 @@ export default function BuyProduct() {
             value={quantity}
             inputProps={{ min: 1 }}
             onChange={(e) => setQuantity(Number(e.target.value))}
-            sx={{ width: "100px" }}
+            sx={{ width: "100px" , border:"1px solid white",color:"white"}}
           />
         </Box>
-
-        {/* Buy Button */}
+       
         <Button
           variant="contained"
           color="primary"
@@ -128,7 +124,6 @@ export default function BuyProduct() {
           Buy Now
         </Button>
 
-        {/* Success Message */}
         {success && (
           <Alert
             icon={<CheckIcon fontSize="inherit" />}

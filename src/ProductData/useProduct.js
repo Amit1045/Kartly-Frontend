@@ -1,5 +1,6 @@
 import { create } from "zustand";
 const API_URL = import.meta.env.VITE_API_URL;
+const token = localStorage.getItem("token");
 
 export const useProduct = create((set) => ({
   products: [],
@@ -9,10 +10,13 @@ export const useProduct = create((set) => ({
     if (!newProduct.name || !newProduct.image || !newProduct.price) {
       return { success: false, message: "Please fill all fields." };
     }
+    const token = localStorage.getItem("token"); // get fresh token
+     
     const res = await fetch(`${API_URL}/api/products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+         Authorization: `Bearer ${token}`
       },
       body: JSON.stringify(newProduct),
     });
@@ -42,8 +46,14 @@ export const useProduct = create((set) => ({
   },
   DeleteProducts: async (pid) => {
     try {
+      const token = localStorage.getItem("token"); // get fresh token
+     
       const res = await fetch(`${API_URL}/api/products/${pid}`, {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // attach token
+        },
       });
   
       if (!res.ok) {
@@ -52,7 +62,6 @@ export const useProduct = create((set) => ({
         return { success: false, message: "Failed to delete product" };
       }
   
-      // Update local state immediately
       set((state) => ({
         products: state.products.filter((product) => product._id !== pid),
       }));
@@ -62,7 +71,8 @@ export const useProduct = create((set) => ({
       console.error("Error:", error);
       return { success: false, message: "An error occurred" };
     }
-  },  
+  },
+  
   updateProduct: async (pid,updatedProduct)=>{
     const res=await fetch(`${API_URL}/api/products/${pid}`,{
       method:"PUT",

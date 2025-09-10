@@ -32,7 +32,7 @@ function EditPage({isLight}) {
       if (result?.success === false) {
         console.log("Update failed:", result.message);
       } else {
-        navigate("/"); // after update, redirect to home/products page
+        navigate("/home"); // after update, redirect to home/products page
       }
     } catch (error) {
       console.log("Error updating product:", error);
