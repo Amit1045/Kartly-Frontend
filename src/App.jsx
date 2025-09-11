@@ -7,17 +7,20 @@ import EditCard from './pages/EditCard';
 import BuyProduct from './pages/BuyProduct';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import {useLocation} from "react-router-dom"
 
 function App() {
   const [isLight, setIsLight] = useState(false); // State to control global background
-
+  const location=useLocation()
+  const hideNavbar=location.pathname==="/login" || location.pathname ==="/" ;
   return (
     <div
       className={`min-h-screen transition-colors duration-200 ${
         isLight ? "bg-white" : "bg-gray-900"
       }`}
     >
-      <Navbar isLight={isLight} setIsLight={setIsLight} />
+      {!hideNavbar && 
+      <Navbar isLight={isLight} setIsLight={setIsLight} /> }
       <Routes>
         <Route path="/" element={<SignUp isLight={isLight}  />} />
         <Route path="/signup" element={<SignUp isLight={isLight}  />} />

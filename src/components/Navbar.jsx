@@ -3,7 +3,16 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import SunnyIcon from '@mui/icons-material/Sunny';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { Link } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from "react-router-dom";
+
+
 function Navbar({ isLight, setIsLight }) {
+  const navigate = useNavigate();
+  function handleLogOut(){
+    alert("You Logged out Successfully")
+    navigate("/login")
+  }
   return (
     <div
       className={`max-w-6xl mx-auto px-4 flex justify-between items-center h-16 shadow-md`}>
@@ -12,16 +21,19 @@ function Navbar({ isLight, setIsLight }) {
       </Link>
       <div className="flex gap-2">
         <Link to="/create">
-          <button className="px-3  rounded-2xl text-violet-500 hover:text-cyan-300">
-            <AddBoxIcon />
+          <button title="Add-Items" className="px-3  rounded-2xl text-violet-500 hover:text-cyan-300">
+            <AddBoxIcon  />
           </button>
         </Link>
-        <button
+        <button title="Theme"
           className="px-3 text-violet-500  hover:text-cyan-300"
           onClick={() => setIsLight((prev) => !prev)}
         >
-          {isLight ? <DarkModeIcon /> : <SunnyIcon />}
+          {isLight ? <DarkModeIcon  /> : <SunnyIcon  />}
         </button>
+        <button onClick={handleLogOut} className="px-3 text-violet-500  hover:text-cyan-300"
+         title='Logout'
+         ><LogoutIcon /></button>
       </div>
     </div>
   );

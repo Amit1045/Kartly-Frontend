@@ -59,17 +59,17 @@ function HomePage({ isLight }) {
             <h3>${Product.price}</h3>
             <div className="pt-2 flex gap-2">
 
-              <button className='bg-amber-300 rounded px-2 py-1 hover:bg-red-400'
+              <button title='Delete' className='bg-amber-300 rounded px-2 py-1 hover:bg-red-400'
                 onClick={() => handleDelete(Product._id)}>
                 <DeleteIcon className='text-zinc-600 ' />
               </button>
               <Link to={`/edit/${Product._id}`}>
-                <button className='bg-amber-200 rounded px-2 py-1 hover:bg-blue-300'>
+                <button title='Edit' className='bg-amber-200 rounded px-2 py-1 hover:bg-blue-300'>
                   <EditNoteIcon className='text-zinc-600' />
                 </button>
               </Link>
               <Link to={`/buy/${Product._id}`}>
-                <button className='bg-amber-200 rounded text-zinc-600 px-2 py-1 hover:bg-red-400 hover:text-white' >
+                <button title='Buy' className='bg-amber-200 rounded text-zinc-600 px-2 py-1 hover:bg-red-400 hover:text-white' >
                   <LocalMallIcon className='text-red-600' /></button>
               </Link>
             </div>
