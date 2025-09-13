@@ -19,6 +19,7 @@ function Login() {
       if (data?.token) {
         // ✅ Save token in localStorage
         localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.role); 
       }
 
       alert("✅ Login successful");

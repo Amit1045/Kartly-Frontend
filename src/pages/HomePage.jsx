@@ -11,6 +11,11 @@ function HomePage({ isLight }) {
   const { fetchProducts, products, DeleteProducts } = useProduct();
   const [loading, setLoading] = useState(true);
 
+  // ✅ pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+  const role = localStorage.getItem("role");
+
   useEffect(() => {
     const loadProducts = async () => {
       await fetchProducts(); 
@@ -43,6 +48,12 @@ function HomePage({ isLight }) {
     }
   };
 
+  // ✅ pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+
   return (
     <div>
       <h1 className="text-cyan-400 font-serif py-5 m-6 text-center text-4xl">
@@ -62,7 +73,7 @@ function HomePage({ isLight }) {
       </marquee>
 
       <div className="flex flex-wrap justify-center gap-6 px-4">
-        {products.map((Product) => (
+        {currentItems.map((Product) => (
           <div
             key={Product._id}
             className={
@@ -79,13 +90,14 @@ function HomePage({ isLight }) {
             <h2 className="font-serif mt-2">{Product.name}</h2>
             <h3>${Product.price}</h3>
             <div className="pt-2 flex gap-2">
-              <button
+            {role === "admin" && (<button
                 title="Delete"
                 className="bg-amber-300 rounded px-2 py-1 hover:bg-red-400"
                 onClick={() => handleDelete(Product._id)}
               >
                 <DeleteIcon className="text-zinc-600 " />
-              </button>
+              </button>)}
+              {role === "admin" &&( 
               <Link to={`/edit/${Product._id}`}>
                 <button
                   title="Edit"
@@ -94,6 +106,7 @@ function HomePage({ isLight }) {
                   <EditNoteIcon className="text-zinc-600" />
                 </button>
               </Link>
+            )}
               <Link to={`/buy/${Product._id}`}>
                 <button
                   title="Buy"
@@ -106,6 +119,29 @@ function HomePage({ isLight }) {
           </div>
         ))}
       </div>
+
+      {/* ✅ pagination controls */}
+      {totalPages > 1 && (
+        <div className="flex justify-center gap-4 mt-6 pb-4">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage(currentPage - 1)}
+            className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50 hover:bg-amber-300"
+          >
+            Prev
+          </button>
+          <span className={isLight?"px-4 py-2":"px-4 py-2 text-white"}>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage(currentPage + 1)}
+            className="px-4 py-2 bg-gray-300 rounded hover:bg-amber-300 disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 }
