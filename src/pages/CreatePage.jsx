@@ -62,8 +62,6 @@ function CreatePage({isLight}) {
             <button className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition-colors"
               onClick={handleAddProduct}>Add Product
             </button>
-        
-
         </div>
       </div>
     </div>

@@ -5,14 +5,12 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { Link } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from "react-router-dom";
-import {useAuth} from "../ProductData/useAuth.js"
-
 
 function Navbar({ isLight, setIsLight }) {
   const navigate = useNavigate();
-  const {Logout}=useAuth()
+  
   function handleLogOut(){
-   Logout();
+    localStorage.removeItem("token");
     alert("You Logged out Successfully")
     navigate("/login")
   }
