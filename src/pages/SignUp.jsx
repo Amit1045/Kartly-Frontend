@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useAuth } from "../ProductData/useAuth.js";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
@@ -105,9 +105,11 @@ export default function Signup({ isLight }) {
         {/* Already have account */}
         <p className={isLight ? "mt-6 text-center text-sm text-gray-600":"mt-6 text-center text-sm text-white"}>
           Already have an account?{" "}
-          <a href="/login" className={isLight ? "text-blue-600 font-semibold hover:underline":"text-sky-300 font-semibold hover:underline"}>
+          <Link to={`/login`}>
+          <button className={isLight ? "text-blue-600 font-semibold  hover:underline":"text-sky-300 font-semibold hover:underline"}>
             Login
-          </a>
+          </button>
+          </Link>
         </p>
       </div>
     </div>
