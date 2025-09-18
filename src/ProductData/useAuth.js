@@ -17,11 +17,9 @@ export function useAuth() {
     return res.data;
   };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-  };
+ 
 
   const isLoggedIn = () => !!localStorage.getItem("token");
 
-  return { login, signup, logout, isLoggedIn };
+  return { login, signup, isLoggedIn };
 }

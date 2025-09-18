@@ -10,9 +10,11 @@ function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       const data = await login(email, password);
 
@@ -27,7 +29,10 @@ function Login() {
     } catch (error) {
       console.error("Login failed:", error);
       alert(error.response?.data?.message || "❌ Invalid email or password");
+    }finally {
+      setLoading(false)
     }
+
   };
 
   return (
@@ -76,9 +81,15 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full rounded-lg bg-purple-600 py-2 text-white font-semibold hover:bg-purple-700 transition-colors"
+            disabled={loading}
+            className={`w-full rounded-lg py-2 font-semibold transition-colors ${
+              loading
+                ? "bg-gray-400 text-white cursor-not-allowed"
+                : "bg-purple-600 text-white hover:bg-purple-700"
+            }`}
+           
           >
-            Login
+            {loading ? "Please wait..." : "Login"}
           </button>
         </form>
 

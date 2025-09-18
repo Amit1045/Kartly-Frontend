@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 function Navbar({ isLight, setIsLight }) {
   const navigate = useNavigate();
   const role = localStorage.getItem("role");
-  function handleLogOut(){
+  function handleLogOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("role")
     alert("You Logged out Successfully")
@@ -22,21 +22,21 @@ function Navbar({ isLight, setIsLight }) {
         <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Kartly 🛒</h1>
       </Link>
       <div className="flex gap-2">
-      {role === "admin" && (  <Link to="/create">
+        {role === "admin" && (<Link to="/create">
           <button title="Add-Items" className="px-3  rounded-2xl text-violet-500 hover:text-cyan-300">
-            <AddBoxIcon  />
+            <AddBoxIcon />
           </button>
         </Link>
-      )}
+        )}
         <button title="Theme"
           className="px-3 text-violet-500  hover:text-cyan-300"
           onClick={() => setIsLight((prev) => !prev)}
         >
-          {isLight ? <DarkModeIcon  /> : <SunnyIcon  />}
+          {isLight ? <DarkModeIcon /> : <SunnyIcon />}
         </button>
         <button onClick={handleLogOut} className="px-3 text-violet-500  hover:text-cyan-300"
-         title='Logout'
-         ><LogoutIcon /></button>
+          title='Logout'
+        ><LogoutIcon /></button>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ export const useProduct = create((set) => ({
       return { success: false, message: "Please fill all fields." };
     }
     const token = localStorage.getItem("token"); // get fresh token
-
+    
     const res = await fetch(`${API_URL}/api/products`, {
       method: "POST",
       headers: {
