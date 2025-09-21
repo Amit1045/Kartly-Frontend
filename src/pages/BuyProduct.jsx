@@ -104,7 +104,8 @@ export default function BuyProduct({isLight}) {
             value={quantity}
             inputProps={{ min: 1 }}
             onChange={(e) => setQuantity(Number(e.target.value))}
-            sx={{ width: "100px" , border:"1px solid white",color:"white"}}
+            sx={{ width: "100px" , border:"1px solid white",backgroundColor:"whitesmoke",borderRadius:"5px"}}
+            
           />
         </Box>
        

@@ -9,8 +9,7 @@ export default function Signup({ isLight }) {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false); // ✅ start with false
-
+  const [loading, setLoading] = useState(false); 
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
