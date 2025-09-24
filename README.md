@@ -65,7 +65,9 @@ Run locally:
 npm run dev
 ```
 # or
-```yarn dev```
+```
+yarn dev
+```
 
 The app should open at http://localhost:5173 (or equivalent) by default.
 
