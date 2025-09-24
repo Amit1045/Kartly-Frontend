@@ -2,9 +2,12 @@
 
 **Kartly-Frontend** is the frontend client for **Kartly** — a full-stack e-commerce platform. It handles product listing, cart management, CRUD operations, and user interactions through a clean, responsive UI built in React (with Vite) and Tailwind CSS.
 
-The backend (APIs, server logic) is maintained separately.  
+The backend (APIs, server logic) is maintained separately in the given repo :.  
+
+Backend-repo :[Kartly-backend](https://github.com/Amit1045/Kartly-Backend)
 
 Live demo: [kartly-frontend.vercel.app](https://kartly-frontend.vercel.app)  
+
 
 
 ## Features
@@ -87,15 +90,15 @@ Here is an overview of the directory structure:
 ├── src/
 │   ├── components/      # Reusable UI components
 │   ├── pages/           # Page-level React components / routes
-│   ├── services/        # API / network calls
+│   ├── ProductData/     # API / network calls
 │   ├── hooks/            # Custom React hooks
 │   ├── styles/           # Tailwind config, global styles
-│   ├── utils/             # Utility/helper functions
 │   └── main.jsx           # Entry point
 ├── .gitignore
 ├── package.json
 ├── vite.config.js
 └── README.md
+
 
 ## Environment Variables
 ```bash
