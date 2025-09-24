@@ -52,20 +52,20 @@ Make sure you have:
    git clone https://github.com/Amit1045/Kartly-Frontend.git
    cd Kartly-Frontend
 Install dependencies:
-
+```bash
 npm install
+```
 # or
+```
 yarn install
-
-
+```
 Create/modify environment variables (see next section).
-
 Run locally:
-
+```
 npm run dev
+```
 # or
-yarn dev
-
+```yarn dev```
 
 The app should open at http://localhost:5173 (or equivalent) by default.
 
@@ -84,7 +84,7 @@ lint	Run ESLint to check code style / issues (if configured)
 ## Project Structure
 
 Here is an overview of the directory structure:
-.
+```
 ├── public/
 │   └── … (static assets)
 ├── src/
@@ -98,7 +98,7 @@ Here is an overview of the directory structure:
 ├── package.json
 ├── vite.config.js
 └── README.md
-
+```
 
 ## Environment Variables
 ```bash
@@ -114,11 +114,11 @@ VITE_API_URL=http://localhost:4000
 
 ## Contributing
 
-1.Contributions, issues, and feature requests are welcome!
-2.Fork the repo
-3.Create a new branch (git checkout -b feature/foo)
-4.Commit your changes (git commit -am 'Add new feature')
-5.Push to your branch (git push origin feature/foo)
-6.Open a pull request
+1. Contributions, issues, and feature requests are welcome!
+2. Fork the repo
+3. Create a new branch (git checkout -b feature/foo)
+4. Commit your changes (git commit -am 'Add new feature')
+5. Push to your branch (git push origin feature/foo)
+6. Open a pull request
 
 Please make sure your code follows the existing style, add tests (if applicable), and update docs.
